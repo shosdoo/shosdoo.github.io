@@ -19,8 +19,8 @@ locale                   : "en-US"
 title                    : "shsodoo.io"
 title_separator          : "-"
 name                     : "Isrash"
-description              : "Resolucion de maquinas que haga"
-url                      : "https://snowscan.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : "Personal blog for write up of machines or projects"
+url                      :  # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "slemire/slemire.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 logo                     : 
@@ -102,7 +102,7 @@ analytics:
 # Site Author
 author:
   name             : "isra"
-  avatar           : "/assets/images/isrash.png"
+  avatar           : "/assets/images/bob.png"
   bio              : "should have burned this place down when i had the chance"
   location         : "MX"
   email            : "israel.ir793@gmail.com"
