@@ -61,7 +61,7 @@ Esta opcion nos permite ver un historial de los cambios, donde incluira un hash 
 3- Despues de que se haya guardado la modificacion, realizamos un compromiso, con "git commit -m 'frase'"
 agregando el comentario describiendo el cambio, y con git log podemos ir viendo los cambios realizados
 
-====
+----
 
 `git show HEAD`
 
@@ -83,25 +83,28 @@ Este comando nos sirve para elminar un archivo de el area de preparacion en caso
 
 En este comando podemos volver a una version en especifico de el script, haciendo un git log y obteniendo los primeros 7 caracteres de el hash sha, podemos hacer el comando de arriba y nos realizara el cambio
 
-====
+----
 
 <https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>
 
 Hoja de trucos de markdown y algunos ejemplos:
 
-markdown
 \* italic
+
 ** bold
+
 ~ strike
 
 title 
-\====\
+\====
+
 subtittle
-\--------\
+\-\-\-\-
+
 \# Title de mi documento
 
 
-====
+----
 
 `git branch`
 
@@ -128,7 +131,7 @@ Con este comando eliminamos la rama que no queramos una vez que hayamos fucionad
 Ejemplo, con git branch enumeramos las raiz, despues creamos una nueva con git branch "raiz_nueva", despues cambiamos a ella con 'git checkout raiz', una vez en esa raiz hacemos las modificaciones que queramos, una vez terminado hacemos un 'git add filename' y un 'git commit -m "comentario"', si aprueban nuestra modificacion, en la rama master(main) lo que haran es fusionarlo, con el comando 'git merge raiz', y de esta manera si es que no hay conflictos en modificaciones para la fusion, se agregara lo de la nueva rama a la rama master(main)
 
 
-====
+----
 
 ## Control remoto
 
@@ -152,7 +155,7 @@ Este comando nos sirve para fusionar la rama que realizo los cambios en el origi
 
 Este comando nos permite agregar nuestro poyecto de la rama que creamos a el origin de el repositorio creado
 
-====
+----
 
 `git rebase`
 
